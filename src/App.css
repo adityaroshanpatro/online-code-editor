@@ -1,38 +1,40 @@
-.App {
+.header {
   text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.editor-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  height: 50vh; /* Adjust based on your preference */
+  background-color: #1e1e1e; /* Dark background for the editor area */
 }
 
-.App-link {
-  color: #61dafb;
+.editor {
+  width: 33%;
+  background-color: #1e1e1e;
+  color: #ffffff; /* Ensuring text is white for readability */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+iframe {
+  width: 100%;
+  height: 50vh; /* Adjust based on your preference */
+  border: none; /* Removes border for a cleaner look */
+  background-color: #ffffff; /* Background for the result window */
+}
+
+/* Optional: Overriding default Monaco editor styles */
+.monaco-editor .editor {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333; /* Subtle borders for the editor */
 }
