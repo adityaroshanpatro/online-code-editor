@@ -3,9 +3,9 @@ import Editor from '@monaco-editor/react';
 import './App.css'; // Ensure you have CSS for styling
 
 const CodeEditor = () => {
-  const [htmlCode, setHtmlCode] = useState('<h1>Hello World</h1>');
-  const [cssCode, setCssCode] = useState('h1 { color: red; }');
-  const [jsCode, setJsCode] = useState('console.log("Hello from JS!")');
+  const [htmlCode, setHtmlCode] = useState('');
+  const [cssCode, setCssCode] = useState('');
+  const [jsCode, setJsCode] = useState('');
 
   const iframeRef = useRef(null);
 
@@ -27,6 +27,24 @@ const CodeEditor = () => {
     document.write(documentContents);
     document.close();
   };
+
+  useEffect(() => {
+    // Fetch the default HTML, CSS, and JS files from the public folder
+    fetch('/default.html')
+      .then((response) => response.text())
+      .then((html) => setHtmlCode(html))
+      .catch((error) => console.error('Error loading HTML:', error));
+
+    fetch('/default.css')
+      .then((response) => response.text())
+      .then((css) => setCssCode(css))
+      .catch((error) => console.error('Error loading CSS:', error));
+
+    fetch('/default.js')
+      .then((response) => response.text())
+      .then((js) => setJsCode(js))
+      .catch((error) => console.error('Error loading JS:', error));
+  }, []);
 
   useEffect(() => {
     updateIframe(); // Update the iframe whenever the code changes
